@@ -83,3 +83,80 @@ public class Main {
 ```
 ***
 
+## 02 메소드(method)
+
+1. 메소드
+
+`메소드`란 하나 또는 여러가지 기능을 묶어서 독립적으로 사용 할 수 있는 프로그램 구성 단위로, 모듈이라고도 합니다.
+
+입력값(파라미터)을 넣어주면 해당 기능을 처리하고 출력 값을 반환합니다.
+
+
+2. 메소드 작성 형식
+
+	자료형 메소드 이름(매개 변수1, 매개 변수2, ...){...}
+
+
+
+3. 메소드 종류
+
+- 파라미터와 반환값이 모두 존재하는 메소드
+
+- 파라미터는 존재하나 반환값이 없는 메소드
+
+e.g. main 메소드: 입력값은 있으나 출력값은 없는 메소드
+
+- 파라미터는 없으나 반환값은 존재하는 메소드
+
+- 둘다 없는 메소드
+
+> main 메소드
+>
+> 유일하게 이름이 지정되어 있는 메소드
+>
+> 한 프로그램에 반드시 main 메소드가 존재해야하고 한 프로젝트당 반드시 하나만 존재해야한다.
+> Call stack은 메소드를 호출하기 위한 계층으로 call stack에는 항상 main 메소드가 들어있다.
+
+4. 메소드 형식
+
+**[4-1] 파라미터 O, 반환값 O 메소드**
+
+- 두개의 값을 입력 받고 결과를 반환하는 메소드
+
+- 이렇게 메소드 안에서 호출하게 되면 입력값을 받기위한 변수로는 사용 불가함
+```Javascript
+	public static int add(int a, int b) {
+		int c, d;
+		int result = a + b;
+		return result;
+	}
+```
+ 
+
+**[4-2] 파라미터 O, 반환값 X 메소드**
+```Javascript
+	public static void sub(int a, int b) {//return이 없는 경우 반환형에 void 써줌
+		int result = a - b;
+		System.out.println(a + " - " + b + " = " + result);
+	}
+ ```
+
+**[4-3] 파라미터 X, 반환값 O 메소드**
+```Javascript
+	public static int mul() {
+		int a = scan.nextInt();
+		int b = scan.nextInt();
+		int result = a * b;
+		return result;	
+	}
+```
+
+**[4-4] 파라미터 X, 반환값 X 메소드**
+```Javascript
+	public static void div() {
+		int a = scan.nextInt();
+		int b = scan.nextInt();
+		int result = a / b;
+		System.out.println(a + " / " + b + " = " + result);
+	}
+```
