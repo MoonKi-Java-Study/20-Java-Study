@@ -160,3 +160,106 @@ e.g. main 메소드: 입력값은 있으나 출력값은 없는 메소드
 		System.out.println(a + " / " + b + " = " + result);
 	}
 ```
+
+***
+
+## 03 인자전달
+
+- 자바에서 지원하는 타입에는 primitive type과 reference type이 있다.
+
+- primitive type : byte, char, short, int, long, float, double, boolean 등과 같은 자바 기본 타입
+
+- reference type : java.lang.object를 상속받는 모든 객체
+
+ 
+
+**(1) primitive type이 인자로 전달되는 경우**
+
+ 
+```Javascript
+public class test1 {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a = 10;
+		System.out.println("a = "+a);
+		add(a);
+		System.out.println("a = "+a);
+	}
+	static void add(int x) { // a의 값을 1증가 시켜주는 함수
+		x++;
+	}
+
+}
+``` 
+
+> a = 10 a = 10
+
+값이 바뀌지 않는 것을 보아 `Call By Value`임을 알 수 있다.
+
+ 
+
+**(2) 객체 레퍼런스가 인자로 전달되는 경우**
+
+```Javascript 
+
+class Point{
+	int x;
+	Point(int x){
+		this.x = x;
+	}
+}
+public class test2 {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Point p = new Point(10);
+		System.out.println("a = "+p.x);
+		add(p);
+		System.out.println("a = "+p.x);
+	}
+	static void add(Point a) { // a.x 값을 1 증가 시켜주는 함수
+		a.x++;
+	}
+
+}
+ 
+```
+
+> a = 10 a = 11
+ 
+값이 바뀌는 것을 보아 `Call By Reference`임을 알 수 있다.
+
+ 
+
+**(3) 배열이 인자로 전달되는 경우**
+
+```Javascript
+public class test2 {
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a[] = {10, 20};
+		System.out.println("x = "+a[0]+", y = "+a[1]);
+		swap(a);
+		System.out.println("x = "+a[0]+", y = "+a[1]);
+		
+		
+	}
+	static void swap(int x[]) { // x[0]와 x[y] 값을 교환하는 함수
+		int temp = x[0];
+		x[0] = x[1];
+		x[1] = temp;
+	}
+
+}
+ 
+```
+
+> x = 10, y = 20 x = 20, y = 10
+
+값이 바뀌는 것을 보아 `Call By Reference`임을 알 수 있다.
+
+ 
+
+> [정리] primitive type은 Call By Value, reference type은 Call By Value
