@@ -459,7 +459,7 @@ public class Static_ex {
 5. static 메소드에서는 this 키워드를 사용할 수 없다. static 메소드는 객체가 생성되지 않은 상황에서도 클래스 이름을 이용하여 호출이 가능하기 때문에 호출 당시 실행 중인 객체를 가리키는 this 연산자를 사용할 수 없다. 따라서, public static void main(String args[]) 인 main 메소드도 this 연산자 사용이 불가능 하다.
 
 
-## 06 final
+## 07 final
  
 **final 필드**
 
