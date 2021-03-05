@@ -343,18 +343,128 @@ int add(long a, int b) {return a+b;}
 | **default** | 동일 패키지 내에서만 | O | O |   |   |
 | **private** | 동일 클래스 내에서만 | O |   |   |   |
 
-(1) public
+**(1) public**
   
 공개 정도가 가장 높고 어디에서든 자유롭게 접근할 수 있다.
 
-(2) protected
+**(2) protected**
   
 같은 패키지 내에서 접근이 가능하고 다른 패키지에서도 상속을 받은 클래스 내부에서는 사용 가능하다. public과 다른 점은 다른 패키지의 자식 클래스 외부에서는 접근할 수 없다는 것이다.
 
-(3) default (package private)
+**(3) default (package private)**
   
 같은 패키지 내에서만 접근이 가능하다. 아무런 접근 지정자도 없을 경우 이 옵션이 자동으로 적용된다.
 
-(4) private
+**(4) private**
   
 동일 클래스 내에서만 접근이 가능한 가장 낮은 단계의 자유도를 갖는다.
+
+## 06 static
+
+**정적(Static)이란?**
+
+`정적(static)`은 고정된이란 의미를 가지고 있습니다.
+Static이라는 키워드를 사용하여 Static변수와 Static메소드를 만들 수 있는데 다른말로 정적필드와 정적 메소드라고도 하며 이 둘을 합쳐 정적 멤버라고 합니다. (클래스 멤버라고도 합니다.) 
+정적 필드와 정적 메소드는 객체(인스턴스)에 소속된 멤버가 아니라 클래스에 고정된 멤버입니다. 
+그렇기에 클래스 로더가 클래스를 로딩해서 메소드 메모리 영역에 적재할때 클래스별로 관리됩니다. 
+따라서 클래스의 로딩이 끝나는 즉시 바로 사용할 수 있습니다.
+
+**정적(Static) 멤버 생성**
+
+![정적 멤버 생성](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fefeoz2%2FbtqDsOt6are%2F0masSctPvO9gk0PkTY7tSK%2Fimg.png)
+
+Static 키워드를 통해 생성된 정적멤버들은 Heap영역이 아닌 Static영역에 할당됩니다. 
+Static 영역에 할당된 메모리는 모든 객체가 공유하여 하나의 멤버를 어디서든지 참조할 수 있는 장점을 가지지만 Garbage Collector의 관리 영역 밖에 존재하기에 Static영역에 있는 멤버들은 프로그램의 종료시까지 메모리가 할당된 채로 존재하게 됩니다. 
+그렇기에 Static을 너무 남발하게 되면 만들고자 하는 시스템 성능에 악영향을 줄 수 있습니다.
+
+
+**정적(Static) 멤버 선언**
+
+필드나 메소드를 생성 시 인스턴스로 생성할것인지 정적으로 생성할것인지에 대한 판단 기준은 공용으로 사용하느냐 아니냐로 내리면 됩니다. 그냥 생성한다면 자동으로 인스턴스로 생성되며 정적으로 생성하려면 필드와 메소드 선언 시 static이라는 키워들를 추가적으로 붙이면 됩니다. 
+
+```Javascript
+static int num = 0; //타입 필드 = 초기값
+public static void static_method(){} //static 리턴 타입 메소드 {}
+```
+
+> 정적(Static) 필드 사용 예시
+```Javascript
+class Number{
+    static int num = 0; //클래스 필드
+    int num2 = 0; //인스턴스 필드
+}
+
+public class Static_ex {
+	
+    public static void main(String[] args) {
+    	Number number1 = new Number(); //첫번째 number
+    	Number number2 = new Number(); //두번쨰 number
+    	
+    	number1.num++; //클래스 필드 num을 1증가시킴
+    	number1.num2++; //인스턴스 필드 num을 1증가시킴
+    	System.out.println(number2.num); //두번째 number의 클래스 필드 출력
+    	System.out.println(number2.num2); //두번째 number의 인스턴스 필드 출력
+    }
+}
+```
+> 실행결과
+
+	1
+	0
+
+- 인스턴스 변수는 인스턴스가 생성될 때마다 생성되므로 인스턴스마다 각기 다른 값을 가지지만 정적 변수는 모든 인스턴스가 하나의 저장공간을 공유하기에 항상 같은 값을 가지기에 나타난 현상입니다.
+
+**정적(Static) 메서드 사용 예시**
+```Javascript
+class Name{
+    static void print() { //클래스 메소드
+	System.out.println("내 이름은 홍길동입니다.");
+    }
+
+    void print2() { //인스턴스 메소드
+	System.out.println("내 이름은 이순신입니다.");
+    }
+}
+
+public class Static_ex {
+	
+    public static void main(String[] args) {
+        Name.print(); //인스턴스를 생성하지 않아도 호출이 가능
+    	
+        Name name = new Name(); //인스턴스 생성
+        name.print2(); //인스턴스를 생성하여야만 호출이 가능
+    }
+}
+```
+> 실행결과
+
+	내 이름은 홍길동입니다.
+	내 이름은 이순신입니다.
+
+- 정적 메소드는 클래스가 메모리에 올라갈 때 정적 메소드가 자동적으로 생성됩니다. 
+그렇기에 정적 메소드는 인스턴스를 생성하지 않아도 호출을 할 수 있습니다. 
+정적 메소드는 유틸리티 함수를 만드는데 유용하게 사용됩니다.
+
+
+**non-static 멤버와 static 멤버의 특징**
+
+1. 눈은 각 사람마다 하나씩 있고, 공기는 오직 하나만 있어서 모든 사람이 공유한다는 차이점이 있다. 여기서 눈은 사람이라는 객체의 non-static 멤버(=인스턴스 멤버)이며, 공기는 static 멤버(클래스 멤버) 이다.
+
+2. static 멤버는 클래스당 하나씩 생긴다고 해서 클래스 멤버라고도 부르며, non-static멤버는 각 객체마다 하나식 생긴다고 해서 인스턴스 멤버라고도 불부른다.
+
+3. static 메소드는 객체가 생성되지 않은 상황에서도 사용이 가능하므로 객체를 생성하지 않고서는 직접 인스턴스 변수, 인스턴스 메소드 등을 사용할 수 없다. 그러나, 인스턴스 메소드는 static멤버들을 모두 사용할 수 있다.
+
+4. public static void main(String args[]) 인 main 메소드도 static 메소드이고 객체를 생성해야만 사용할 수 있는 인스턴스 변수 및 인스턴스 메소드의 특성 때문에 객체를 생성되지 않은 상황에서 클래스 이름을 이용하여  인스턴스 변수 및 인스턴스 메소드를 사용할 수 없다고 하겠다. 사용하려면, 객체를 우선 생성한 후 인스턴스 변수와 인스턴스 메소드를 사용하여야 한다. 따라서 main 메소드에서 인스턴스 변수와 인스턴스 메소드 사용은 객체 생성이 필수적이다.
+
+5. static 메소드에서는 this 키워드를 사용할 수 없다. static 메소드는 객체가 생성되지 않은 상황에서도 클래스 이름을 이용하여 호출이 가능하기 때문에 호출 당시 실행 중인 객체를 가리키는 this 연산자를 사용할 수 없다. 따라서, public static void main(String args[]) 인 main 메소드도 this 연산자 사용이 불가능 하다.
+
+
+## 06 final
+ 
+**final 필드**
+
+	final int number = 1; //final 타입 필드 [= 초기값];
+
+final 필드는 위와 같이 선언하며 final 필드의 초기값을 줄 수 있는 방법은 딱 두가지 방법밖에 없습니다. 
+첫번째는 필드 선언시에 주는 방법이 있고, 두번째는 생성자를 통해서 주는 방법이 있습니다. 
+단순 값이라면 필드 선언시에 주는 것이 가장 간단하지만 복잡한 초기화 코드가 필요하거나 객체 생성 시에 외부 데이터로 초기화를 시켜야한다면 생성자를 통해서 초기값을 부여하는 방법을 써야 합니다. 생성자는 final 필드의 최종 초기화를 마쳐야 하는데 만약 초기화가 되지 않은 final 필드가 있다면 컴파일 에러가 발생합니다.
