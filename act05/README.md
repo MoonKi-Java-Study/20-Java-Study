@@ -46,6 +46,99 @@ class Child extends Parent{
 }
 ```
 
+**자식 클래스(child class)**
+
+자식 클래스(child class)란 부모 클래스의 모든 특성을 물려받아 새롭게 작성된 클래스를 의미합니다.
+
+ 
+
+자바에서 자식 클래스는 다음과 같은 문법을 통해 선언합니다.
+
+	class 자식클래스이름 extend 부모클래스이름 { ... }
+
+다음 그림은 부모 클래스와 자식 클래스 간의 포함 관계를 나타낸 그림입니다.
+
+ 
+
+![상속다이어그램](http://www.tcpschool.com/lectures/img_java_inheritance_diagram.png)
+
+ 
+
+이처럼 부모 클래스는 자식 클래스에 포함된 것으로 볼 수 있습니다.
+
+따라서 부모 클래스에 새로운 필드를 하나 추가하면, 자식 클래스에도 자동으로 해당 필드가 추가된 것처럼 동작합니다.
+
+ 
+
+
+자식 클래스에는 부모 클래스의 필드와 메소드만이 상속되며, 생성자와 초기화 블록은 상속되지 않습니다.
+
+또한, 부모 클래스의 접근 제어가 private이나 default로 설정된 멤버는 자식 클래스에서 상속받지만 접근할 수는 없습니다.
+
+ 
+
+> 예제
+```Javascript
+class Parent {
+
+    private int a = 10; // private 필드
+
+    public int b = 20;  // public 필드
+
+}
+
+ 
+
+class Child extends Parent {
+
+    public int c = 30;  // public 필드
+
+    void display() {
+
+①      // System.out.println(a); // 상속받은 private 필드 참조
+
+②      System.out.println(b);    // 상속받은 public 필드 참조
+
+③      System.out.println(c);    // 자식 클래스에서 선언한 public 필드 참조
+
+    }
+
+}
+
+ 
+
+public class Inheritance01 {
+
+    public static void main(String[] args) {
+
+        Child ch = new Child();
+
+        ch.display();
+
+    }
+
+}
+```
+
+
+> 실행 결과
+
+	20
+	
+	30
+
+ 
+
+위 예제의 ②번 라인에서는 자식 클래스의 메소드에서 부모 클래스에서 상속받은 public 필드를 참조하고 있습니다.
+
+이처럼 자식 클래스에서 따로 선언하지 않은 필드라도 해당 이름의 필드를 부모 클래스에서 상속받았다면 문제가 없습니다.
+
+하지만 주석 처리된 ①번 라인처럼 해당 필드가 부모 클래스의 private 필드라면 접근할 수 없으므로, 오류를 발생시킬 것입니다.
+
+또한, 자식 클래스에서는 ③번 라인처럼 자신만의 필드나 메소드를 선언하여 사용할 수 있습니다.
+
+
+
 - 자식 클래스는 부모 클래스로부터 물려받은 멤버 외에 `다른 멤버를 추가로 가질 수 있습니다.`
 
 - 자식 클래스에서 정의된 멤버는 부모클래스 객체에서는 사용할 수 없습니다.
@@ -69,6 +162,8 @@ class Child extends Parent{
 
 3. 클래스 수정 수정/추가에 대한 유연성 및 확장성 증가
 
+
+
 ## 03 상속의 특징
 
 - 클래스의 다중 상속을 지원하지 않는다.
@@ -83,6 +178,87 @@ class Child extends Parent{
 
 
 ## 04 서브 클래스와 슈퍼 클래스의 생성자 관계
+
+**서브 클래스 객체 생성**
+
+서브 클래스는 슈퍼클래스의 private 멤버를 제외하고 모든 멤버를 접근할 수 있다.
+
+
+**생성자**
+
+Q. 서브 클래스의 생성자와 슈퍼 클래스의 생성자 중 누가 먼저 실행될까? (슈퍼클래스의 생성자)
+
+Q. 서브 클래스 객체가 생성될 때 서브클래스의 생성자와 슈퍼 클래스의 생성자가 모두 실행될까? (0) 
+
+답의 이유는 아래 그림 '슈퍼 클래스와 서브 클래스의 생성자 간 호출 및 실행 관계도' 를 보면서 이해해보자.
+
+![슈퍼클래스, 서브클래스 호출 실행관계도](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FRmJU5%2FbtqvUx8WO73%2FJKaisDO2lUnPPkl9ATBbWk%2Fimg.png)
+
+ 
+**서브 클래스에서 슈퍼 클래스 생성자 선택**
+
+슈퍼 클래스에 여러 생성자가 있을 때 서브 클래스의 생성자와 함께 실행될 슈퍼클래스의 생성자는 원칙적으로 서브 클래스의 개발자가 각 생성자에 대해 함께 실행될 슈퍼클래스의 생성자를 지정한다. 
+그러나 명시하지 않았을 경우 **컴파일러가 자동으로 슈퍼클래스의 기본 생성자를 호출**하도록 자바 컴파일러가 작동한다.
+
+ 
+슈퍼 클래스에 기본 생성자가 없을 경우 컴파일 오류 메세지를 출력한다. 
+
+(Implicit super constructor A() is undefined. Must explicitly invoke another constructor)
+
+
+서브클래스의 생성자에서 super()를 이용하면 서브클래스에서 명시적으로 슈퍼클래스의 생성자를 선택할 수 있다. 괄호 안에 인자를 넣을 수도 있다. 
+요점은 super()가 반드시 생성자의 첫 줄에 사용되어야 한다는 것!
+
+
+> | 예제 5-3 | super()를 활용한 Colorpoint 작성
+
+
+	blue(5,6)
+
+ 
+```Javascript
+package Luxuryjava05;
+
+class Point {
+	private int x, y;
+
+	public Point() {
+		this.x = this.y = 0;
+	}
+
+	public Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public void showPoint() {
+		System.out.println("(" + x + "," + y + ")");
+	}
+}
+
+class ColorPoint extends Point {
+	private String color;
+
+	public ColorPoint(int x, int y, String color) {
+		super(x, y);
+		this.color = color;
+	}
+
+	public void showColorPoint() {
+		System.out.println(color);
+		showPoint();
+	}
+}
+
+public class SuperEx {
+
+	public static void main(String[] args) {
+		ColorPoint cp = new ColorPoint(5, 6, "blue");
+		cp.showColorPoint();
+
+	}
+}
+``` 
 
 
 ## 05 super와 super()
