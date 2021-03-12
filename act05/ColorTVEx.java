@@ -1,22 +1,29 @@
 class TV{
 	private int size;
+	
+	public TV() {
+		this.size = 0;
+	}
 	public TV(int size) {
 		this.size = size;
 	}
-	public void getSize() {
-		System.out.print(size + "인치");
+	public int getSize() {
+		return size;
 	}
 }
 
 class ColorTV extends TV{
 	private int color;
+	public ColorTV() {
+		this.color = 0;
+	}
 	public ColorTV(int size, int color) {
 		super(size);
 		this.color = color;
 	}
 	public void printProperty() {
-		getSize();
-		System.out.print(" " + color + "컬러");
+		System.out.print(super.getSize() + "인치 " + color + "컬러");
+	
 	}
 }
 public class ColorTVEx {
