@@ -1,7 +1,9 @@
 public class TV {
     private int size;
 
-    public TV() { }
+    public TV() {
+        this.size = 0;
+    }
 
     public TV(int size) {
         this.size = size;
