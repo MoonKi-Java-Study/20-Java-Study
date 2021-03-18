@@ -103,6 +103,80 @@ Student stu = (Student)per;
 
 다운캐스팅은 이와같이 명시적으로 타입 변환을 해주어야 한다.
 
+***
+
+## 02 instanceof
+
+`instanceof 연산자` : 객체의 타입이 맞는지 확인한다.
+
+객체의 클래스를 알아내는 연산자 입니다.
+
+ 
+
+추상클래스를 사용하다 보면 많은 양의 서브 클래스를 다뤄야 하는 경우가 있습니다.
+
+이럴 때 instanceof 연산자를 사용하여 어떤 서브클래스 객체를 사용하는지 알아낼 수 있습니다.
+
+ 
+
+instanceof 연산자를 사용하면 좌변의 변수가 가리키는 객체의 클래스가
+
+오른쪽과 같은 클래스인지 여부를 확인할 수 있습니다.
+
+```Java
+class Parent{}
+
+class Child extends Parent{}
+
+ 
+
+public class InstanceofTest {
+
+    
+
+    public static void main(String[] args){
+
+        Parent parent = new Parent();
+
+        Child child = new Child();
+
+        
+
+        System.out.println( parent instanceof Parent );  // true
+
+        System.out.println( child instanceof Parent );   // true
+
+        System.out.println( parent instanceof Child );   // false
+
+        System.out.println( child instanceof Child );   // true
+
+ 
+
+    }
+
+ 
+
+}
+```
+
+왜 세번째는 false가 반환되었을까?
+
+instanceof를 위에서 "객체타입 확인","형변환 가능한지 여부 확인" 이라 말했는데 어렵게 느껴진다면
+
+쉽게 말해 " instancof는 해당 클래스가 자기집이 맞는지 확인해 주는것 " 이라고 생각하면 될것이다.
+
+ > 정리
+
+1. 부모가 본인집을 찾았으니 true
+
+2. 자식이 상속받은 부모집을 찾았으니 true (상속을 받았으니 자기집이라해도 무방하죠?)
+
+3. 부모가 자식집을 찾았으니 false (자식집은 자식집이지 부모집은 아니니까요)
+
+4. 자식이 본인집을 찾았으니 true 
+
+***
+
 ## 03 오버라이딩
 
 `메소드 오버라이딩(method overriding)`
