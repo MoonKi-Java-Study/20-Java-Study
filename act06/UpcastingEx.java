@@ -1,4 +1,4 @@
-/*class Person{
+class Person{
     String name;
     String id;
 
@@ -28,4 +28,3 @@ public class UpcastingEx {
 
     }
 }
-*/
