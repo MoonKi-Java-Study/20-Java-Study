@@ -390,6 +390,8 @@ SubClass A
 SuperClass B
 ```
 
+> static은 정적, 그렇기 때문에 동적으로 따라가지 않고 정적바인딩으로 슈퍼클래스의 메소드가 출력됨.
+
 SubClass는 SuperClass의 methodA()를 상속받아 오버라이딩했다.
 
 methodA()가 어떤 클래스의 메소드인지 Runtime 즉, 클래스 파일이 실행되는 시점에 결정된다.
