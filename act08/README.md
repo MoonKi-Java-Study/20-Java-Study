@@ -183,3 +183,254 @@ X
 또한, 오토 박싱을 이용하면 new 키워드를 사용하지 않고도 자동으로 Character 인스턴스를 생성할 수 있습니다.
 
 반대로 charValue() 메소드를 사용하지 않고도, 오토 언박싱을 이용하여 인스턴스에 저장된 값을 바로 참조할 수 있습니다.
+
+## 03 String 클래스
+
+### [3-1] java.lang.String 클래스
+
+C언어에서는 문자열을 char형 배열로 표현하지만, 자바에서는 문자열을 위한 String이라는 클래스를 별도로 제공합니다.
+
+String 클래스에는 문자열과 관련된 작업을 할 때 유용하게 사용할 수 있는 다양한 메소드가 포함되어 있습니다.
+
+이러한 String 클래스는 java.lang 패키지에 포함되어 제공됩니다.
+
+ 
+
+String 인스턴스는 한 번 생성되면 그 값을 읽기만 할 수 있고, 변경할 수는 없습니다.
+
+이러한 객체를 자바에서는 불변 객체(immutable object)라고 합니다.
+
+즉, 자바에서 덧셈(+) 연산자를 이용하여 문자열 결합을 수행하면, 기존 문자열의 내용이 변경되는 것이 아니라 내용이 합쳐진 새로운 String 인스턴스가 생성되는 것입니다.
+
+### [3-2] charAt() 메소드
+charAt() 메소드는 해당 문자열의 특정 인덱스에 해당하는 문자를 반환합니다.
+
+만약 해당 문자열의 길이보다 큰 인덱스나 음수를 전달하면, IndexOutOfBoundsException 오류가 발생합니다.
+
+ 
+
+다음 예제는 문자열의 각 문자를 charAt() 메소드를 이용하여 하나씩 출력하는 예제입니다.
+
+> 예제
+```Java
+String str = new String("Java");
+
+System.out.println("원본 문자열 : " + str);
+
+ 
+
+for (int i = 0; i < str.length(); i++) {
+
+    System.out.print(str.charAt(i) + " ");
+
+}
+
+System.out.println("\ncharAt() 메소드 호출 후 원본 문자열 : " + str);
+```
+
+> 실행 결과
+
+```
+원본 문자열 : Java
+
+J a v a 
+
+charAt() 메소드 호출 후 원본 문자열 : Java
+```
+
+### [3-3] compareTo() 메소드
+
+compareTo() 메소드는 해당 문자열을 인수로 전달된 문자열과 사전 편찬 순으로 비교합니다.
+
+이 메소드는 문자열을 비교할 때 대소문자를 구분하여 비교합니다.
+
+만약 두 문자열이 같다면 0을 반환하며, 해당 문자열이 인수로 전달된 문자열보다 작으면 음수를, 크면 양수를 반환합니다.
+
+ 
+
+만약 문자열을 비교할 때 대소문자를 구분하지 않기를 원한다면, compareToIgnoreCase() 메소드를 사용하면 됩니다.
+
+ 
+
+다음 예제는 compareTo() 메소드와 compareToIgnoreCase() 메소드를 이용하여 두 문자열을 비교하는 예제입니다.
+
+> 예제
+```Java
+String str = new String("abcd");
+
+System.out.println("원본 문자열 : " + str);
+
+ 
+
+System.out.println(str.compareTo("bcef"));
+
+System.out.println(str.compareTo("abcd") + "\n");
+
+ 
+
+System.out.println(str.compareTo("Abcd"));
+
+System.out.println(str.compareToIgnoreCase("Abcd"));
+
+System.out.println("compareTo() 메소드 호출 후 원본 문자열 : " + str);
+```
+
+> 실행 결과
+```
+원본 문자열 : abcd
+
+-1
+
+0
+
+32
+
+0
+
+compareTo() 메소드 호출 후 원본 문자열 : abcd
+```
+
+### [3-4] concat() 메소드
+concat() 메소드는 해당 문자열의 뒤에 인수로 전달된 문자열을 추가한 새로운 문자열을 반환합니다.
+
+만약 인수로 전달된 문자열의 길이가 0이면, 해당 문자열을 그대로 반환합니다.
+
+ 
+
+다음 예제는 concat() 메소드를 이용하여 두 문자열을 연결하는 예제입니다.
+
+> 예제
+```Java
+String str = new String("Java");
+
+System.out.println("원본 문자열 : " + str);
+
+ 
+
+System.out.println(str.concat("수업"));
+System.out.println("concat() 메소드 호출 후 원본 문자열 : " + str);
+```
+
+> 실행 결과
+```
+원본 문자열 : Java
+
+Java수업
+
+concat() 메소드 호출 후 원본 문자열 : Java
+```
+
+### [3-5] indexOf() 메소드
+
+indexOf() 메소드는 해당 문자열에서 특정 문자나 문자열이 처음으로 등장하는 위치의 인덱스를 반환합니다.
+
+만약 해당 문자열에 전달된 문자나 문자열이 포함되어 있지 않으면 -1을 반환합니다.
+
+ 
+
+다음 예제는 indexOf() 메소드를 이용하여 특정 문자나 문자열이 처음 등장하는 위치의 인덱스를 찾는 예제입니다.
+
+> 예제
+
+```Java
+String str = new String("Oracle Java");
+
+System.out.println("원본 문자열 : " + str);
+
+ 
+
+System.out.println(str.indexOf('o'));
+
+System.out.println(str.indexOf('a'));
+
+System.out.println(str.indexOf("Java"));
+
+System.out.println("indexOf() 메소드 호출 후 원본 문자열 : " + str);
+```
+
+> 실행 결과
+```
+원본 문자열 : Oracle Java
+
+-1
+
+2
+
+7
+
+indexOf() 메소드 호출 후 원본 문자열 : Oracle Java
+```
+ 
+
+위의 예제처럼 indexOf() 메소드는 문자나 문자열을 찾을 때 대소문자를 구분합니다.
+
+### [3-6] trim() 메소드
+trim() 메소드는 해당 문자열의 맨 앞과 맨 뒤에 포함된 모든 공백 문자를 제거해 줍니다.
+
+ 
+
+다음 예제는 trim() 메소드를 이용하여 문자열에 포함된 띄어쓰기와 탭 문자를 제거하는 예제입니다.
+
+> 예제
+```Java
+String str = new String(" Java     ");
+
+System.out.println("원본 문자열 : " + str);
+
+ 
+
+System.out.println(str + '|');
+
+System.out.println(str.trim() + '|');
+
+System.out.println("trim() 메소드 호출 후 원본 문자열 : " + str);
+```
+
+> 실행 결과
+```
+원본 문자열 :  Java
+
+  Java        |
+
+Java|
+
+trim() 메소드 호출 후 원본 문자열 :  Java
+```
+
+### [3-7] toLowerCase()와 toUpperCase() 메소드
+
+toLowerCase() 메소드는 해당 문자열의 모든 문자를 소문자로 변환시켜 줍니다.
+
+또한, toUpperCase() 메소드는 해당 문자열의 모든 문자를 대문자로 변환시켜 줍니다.
+
+ 
+
+다음 예제는 toLowerCase() 메소드와 toUpperCase() 메소드를 이용하여 문자열의 대소문자를 변경하는 예제입니다.
+
+> 예제
+```Java
+String str = new String("Java");
+
+System.out.println("원본 문자열 : " + str);
+
+ 
+
+System.out.println(str.toLowerCase());
+
+System.out.println(str.toUpperCase());
+
+System.out.println("두 메소드 호출 후 원본 문자열 : " + str);
+```
+
+> 실행 결과
+```
+원본 문자열 : Java
+
+java
+
+JAVA
+
+두 메소드 호출 후 원본 문자열 : Java
+```
+
+String 메소드 정리 : [String method](http://www.dreamy.pe.kr/zbxe/CodeClip/3766960)
