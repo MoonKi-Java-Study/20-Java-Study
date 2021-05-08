@@ -441,7 +441,6 @@ public class Generic03 {
                멀티 스레드 상황에서 안전하게 사용할 수 있다.
 
 > 참고 
-```
 - [List](http://www.tcpschool.com/java/java_collectionFramework_list)
 
 - [stackQueue](http://www.tcpschool.com/java/java_collectionFramework_stackQueue)
@@ -450,4 +449,3 @@ public class Generic03 {
 
 - [Map](http://www.tcpschool.com/java/java_collectionFramework_map)
 
-```
