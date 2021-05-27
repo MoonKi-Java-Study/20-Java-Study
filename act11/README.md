@@ -157,3 +157,144 @@ JButton.addActionListener(new MyButtonListener3());
 
 - 무한 루프를 실행하는 스레드 : Frame 의 x버튼이 눌려질 때까지 이를 반복하며 x버튼이 눌리면 종료
 
+
+
+## 02 이벤트 처리순서
+
+`이벤트 처리 순서`
+
+- 이벤트 발생(예 :마우스나 키보드의 움직임 혹은 입력)
+
+- 이벤트 객체 생성 → 현재 발생한 이벤트에 대한 정보를 가진 객체
+
+- 이벤트 리스너 찾기
+
+- 이벤트 리스너 호출
+
+- 이벤트 객체가 리스너에 전달됨
+
+- 이벤트 리스너 실행
+
+
+## 03 이벤트 리스너 작성 방법
+
+1. 독립 클래스로 작성
+
+- 이벤트 리스너를 완전한 클래스로 작성한다.
+
+- 이벤트 리스너 한 개를 여러 곳에서 사용할 때 적합하다.
+
+2. 내부 클래스로 작성
+
+- 클래스 안에 멤버처럼 클래스를 작성한다.
+
+- 특정 클래스에서만 사용할 때 적합하다.
+
+3. 익명 클래스로 작성
+
+- 클래스의 이름 없이 간단히 리스너를 작성한다.
+
+- 클래스 조차 만들 필요 없이 리스너 코드가 간단한 경우에 적합하다.
+
+
+## 04 어댑터 클래스
+
+- 리스너 작성 시에 사용하지 않는 추상 메소드를 empty body로 라도 모두 구현해야 하는 부담
+
+- 어댑터 클래스 : 리스너의 모든 메소드가 단순 return 하도록 구현해 놓은 클래스
+
+- 추상 메소드가 하나 뿐인 리스너는 어댑터 클래스가 없다. 
+
+> Ex) actionlistener, itemlistener
+
+- KeyAdapter, MouseAdapter 등이 있다.
+
+
+## 05 Key 이벤트와 포커스
+
+- 키를 누르는 순간, 누른 키를 떼는 순간, 누른 키를 떼는 순간(Unicode 키의 경우에만)
+
+> 키 입력 시에 위 세 가지 경우 key 이벤트 발생
+
+- 키 이벤트를 받을 수 있는 조건 : 모든 컴포넌트가 가능하지만 현재 포커스를 가진 컴포넌트
+
+### 포커스
+
+-컴포넌트나 응용 프로그램이 키 이벤트를 독점하는 권한
+
+-컴포넌트에 포커스 설정 방법 : 아래 두 줄의 코드 필요
+
+```Java
+component.setFocusable(true); // component가 포커스를 받을 수 있도록 설정
+
+component.requestFocus(); // componen에 포커스 강제 지정
+```
+ 
+
+### 컴포넌트에 포커스 주기
+
+1. 스윙 프레임이 만들어질 포커스를 주고자 하는 경우
+
+- JFrame의 setVisible(true) 이후에 포커스를 주어야함
+
+```Java
+setVisible(true); // 스윙 프레임 출력
+
+component.setFocusable(true);
+
+component.requestFocus();
+```
+
+2. 마우스로 컴포넌트를 클릭할 때 포커스 지정하는 방법
+
+-언제든지 필요할 때 포커스 줄 수 있음.
+
+```Java
+component.addMouseListener(new MouseAdapter() {
+
+           public void mouseClicked(MouseEvent e) {
+
+                      Component c = (Component)e.getSource(); // 클릭된 컴포넌트
+
+                      c.setFocusable(true);
+
+                      c.requestFocus();
+
+           }
+
+});
+```
+
+**(Ex) KeyListener 의 메소드와 키**
+
+1. 메소드 3개
+
+```Java
+
+-키를 누르는 순간
+
+void keyPressed(KeyEvent e) {
+
+           // 이벤트 처리 루틴
+
+}
+
+-키를 떼는 순간
+
+void keyReleased(KeyEvent e) {
+
+           // 이벤트 처리 루틴
+
+}
+
+-누른 키를 떼는 순간 unicode가 입력된 경우
+
+void keyTyped(KeyEvent e) {
+
+           // 이벤트 처리 루틴
+
+}
+
+Keylistener의 실행순서 : keyPressed → keyRealease
+
+```
