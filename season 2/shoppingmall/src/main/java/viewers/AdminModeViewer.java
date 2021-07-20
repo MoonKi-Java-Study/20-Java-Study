@@ -1,11 +1,5 @@
 package viewers;
 
-import errorcatcher.ErrorCatcher;
-import shoppingmall.AdminRepos;
-
-import java.sql.SQLOutput;
-import java.util.Scanner;
-
 public class AdminModeViewer {
     public AdminModeViewer() {
     }

@@ -33,6 +33,8 @@ public class MainMenu {
         } else if (commandNumber == 1) {
             System.out.println("administer mode");
             new AdminMode();
+        } else if (commandNumber == 2) {
+            new CustomerMode();
         }
     }
 }
