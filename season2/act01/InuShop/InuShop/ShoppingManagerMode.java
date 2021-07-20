@@ -1,21 +1,18 @@
+package InuShop;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
-class MainManager {
+class ShoppingManagerMode extends InuShop{
     public int indexManage = 0;
     public String prod = "";
     public int price= 0;
     Scanner scManager = new Scanner(System.in);
+    ArrayList prodname = new ArrayList();
+    ArrayList prodprice = new ArrayList();
+    ArrayList prodcount = new ArrayList();
 
-    public MainManager(String prod){
-        this.prod = prod;  // 상품 삭제시 & 상품 입력 no
-    }
-
-    public MainManager(String prod, int price){ // 상품 추가시 상품, 가격 입력
-        this.prod = prod;
-        this.price = price;
-    }
-
-    public void printManage() {
+    public void MainManage() {
         System.out.println("< 쇼핑 관리자 모드 >");
         System.out.println("[1] 상품추가");
         System.out.println("[2] 상품삭제");
@@ -23,9 +20,23 @@ class MainManager {
         System.out.println("[4] 돌아가기");
         System.out.print("입력 : ");
         indexManage = scManager.nextInt();
+        switch (indexManage){
+            case 1:
+                AddManage();
+                break;
+            case 2:
+                DelManage();
+                break;
+            case 3:
+                PrintManage();
+                break;
+            case 4:
+                MainMenu();
+                break;
+        }
     }
 
-    public void firstManage() {
+    public void AddManage() {
         System.out.println("새로운 상품을 추가합니다. 상품 이름 입력시 no를 입력하면 빠져 나갑니다.");
         System.out.print("상품 이름 입력 : ");
         prod = scManager.next();
@@ -33,42 +44,27 @@ class MainManager {
         price = scManager.nextInt();
     }
 
-    public void firstPrint() {
+    public void AddPrint() {
         System.out.println(prod + "를(을) 목록에 등록했습니다.");
     }
 
-    public void twiceManage() {
+    public void DelManage() {
         System.out.print("삭제하실 상품의 이름을 입력하세요 : ");
         prod = scManager.next();
     }
 
-    public void twicePrint(){
+    public void DelPrint(){
         System.out.println(prod + "를(을) 삭제합니다.");
     }
 
-}
-
-
-
-
-class main {
-    int indexmain = 0;
-    public int choiceNumber;
-    private final int password = 1234;
-    Scanner scMain = new Scanner(System.in);
-
-    public void printMain() {
-        System.out.println("<< INU 쇼핑에 오신 것을 환영합니다! >>");
-        System.out.println("[1] 쇼핑 관리자 모드");
-        System.out.println("[2] 고객 모드");
-        System.out.println("[3] 종료");
-        System.out.print("입력 : ");
-        indexmain = scMain.nextInt();
-    }
-}
-
-public class InuShop {
-    public static void main(String[] args) {
+    public void AddProduct(String prod){  // 장바구니 추가한 상품 저장
 
     }
+
+    public void AddProdPrint(){
+
+    }
+
+    public void PrintManage(){}
 }
+
