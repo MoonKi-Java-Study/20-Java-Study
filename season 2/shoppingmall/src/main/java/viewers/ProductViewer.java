@@ -12,5 +12,7 @@ public class ProductViewer {
                     , ProductRepos.productList.get(i).get(1)
                     , ProductRepos.productList.get(i).get(2));
         }
+        System.out.println("\n" + "총 "
+                + ProductRepos.productNameList.size() + "가지의 상품" + "\n");
     }
 }

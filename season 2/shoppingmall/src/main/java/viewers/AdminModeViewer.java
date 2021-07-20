@@ -41,4 +41,13 @@ public class AdminModeViewer {
         System.out.println(productName + "를(을) 목록에 등록했습니다.");
         System.out.println();
     }
+
+    public void showProductDelPage() {
+        System.out.print("삭제하실 상품의 이름을 입력하세요 : ");
+    }
+
+    public void showDeletedProduct(String productName) {
+        System.out.println(productName + "를(을) 삭제합니다.");
+        System.out.println();
+    }
 }

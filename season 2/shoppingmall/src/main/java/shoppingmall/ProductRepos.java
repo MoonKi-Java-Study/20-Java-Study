@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 public class ProductRepos {
     public static ArrayList<ArrayList<String>> productList = new ArrayList<ArrayList<String>>();
+    public static ArrayList<String> productNameList = new ArrayList<String>();
 
     public ProductRepos() {
+        productNameList.add("따뜻한 스웨터");
+        productNameList.add("나이키 운동화");
+        productNameList.add("손목시계");
+
         ArrayList<String> data1 = new ArrayList<>();
         data1.add("따뜻한 스웨터");
         data1.add("40000");

@@ -70,6 +70,16 @@ public class AdminMode {
     }
 
     public void runProductDelete() {
+        Scanner scanner = new Scanner(System.in);
+        adminModeViewer.showProductDelPage();
+        String name = scanner.next();
+        if (isProductName(name)) {
+            deleteProduct(name);
+        }
+        if (!isProductName(name)) {
+            System.out.println("상품 삭제 종료.");
+            runAdminMode();
+        }
     }
 
     public boolean isProductName(String name) {
@@ -84,10 +94,18 @@ public class AdminMode {
         product.add(name);
         product.add(Integer.toString(price));
         product.add("100");
-        ProductRepos.productList
-                .add(product);
+        ProductRepos.productList.add(product);
+        ProductRepos.productNameList.add(name);
 
         adminModeViewer.showDisplayedProduct(name);
         runProductAdd();
+    }
+
+    public void deleteProduct(String name) {
+        int indexOfProduct = ProductRepos.productNameList.indexOf(name);
+        ProductRepos.productNameList.remove(indexOfProduct);
+        ProductRepos.productList.remove(indexOfProduct);
+
+        adminModeViewer.showDeletedProduct(name);
     }
 }
