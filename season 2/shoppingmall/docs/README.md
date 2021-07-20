@@ -8,3 +8,10 @@ commandNumber 변수는 메인메뉴에서 사용자의 입력을 받아 저장�
 
 - 입력이 정수인가
 - 입력 받은 정수가 명령을 수행하기에 유효한가
+
+# common error check
+## null pointer
+- null pointer exception
+- null String exception
+    - don't compare null to String
+        - ```null.equls("sthStringVar")```
