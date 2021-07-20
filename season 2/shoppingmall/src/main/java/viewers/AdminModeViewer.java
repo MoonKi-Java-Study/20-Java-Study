@@ -20,5 +20,6 @@ public class AdminModeViewer {
         System.out.println("[2] 상품 삭제");
         System.out.println("[3] 모든 상품 출력");
         System.out.println("[4] 돌아가기");
+        System.out.print("입력 : ");
     }
 }
