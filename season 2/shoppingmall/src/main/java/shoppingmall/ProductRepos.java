@@ -160,4 +160,26 @@ public class ProductRepos {
         }
         return -1;
     }
+
+    public static int getProductInventory(String productName) {
+        if (productNameList.contains(productName)) {
+            int existProductIndex = productNameList.indexOf(productName);
+            int inventory = Integer.
+                    parseInt(productList.
+                            get(existProductIndex).get(2));
+            return inventory;
+        }
+        return -1;
+    }
+
+    public static int getProductPrice(String productName) {
+        if (productNameList.contains(productName)) {
+            int existProductIndex = productNameList.indexOf(productName);
+            int price = Integer.
+                    parseInt(productList.
+                            get(existProductIndex).get(1));
+            return price;
+        }
+        return -1;
+    }
 }

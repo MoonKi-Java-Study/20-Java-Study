@@ -40,8 +40,7 @@ public class CustomerMode {
         String name = scanner.next();
         if (isProductExist(name)) {
             searchProduct(name);
-        }
-        if (!isProductExist(name)) {
+        } else if (!isProductExist(name)) {
             customerModeViewer.showNoProduct();
             runCustomerMode();
         }
@@ -61,6 +60,7 @@ public class CustomerMode {
     }
 
     public void runCartMode() {
-        
+        CartMode cartMode = new CartMode();
+        cartMode.runCartMode();
     }
 }

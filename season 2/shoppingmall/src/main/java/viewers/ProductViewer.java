@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ProductViewer {
     public void showProduct() {
-        // when the no of product is None. prevent error
+        // when the no of product isn't None. prevent error
         if (ProductRepos.productList.size() != 0) {
             showProducts();
         }
