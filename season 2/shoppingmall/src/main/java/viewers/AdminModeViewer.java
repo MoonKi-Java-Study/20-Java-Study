@@ -37,6 +37,7 @@ public class AdminModeViewer {
     }
 
     public void showProductDelPage() {
+        System.out.println("상품을 삭제합니다. 상품 이름 입력 시 no를 입력하면 빠져 나갑니다.");
         System.out.print("삭제하실 상품의 이름을 입력하세요 : ");
     }
 
