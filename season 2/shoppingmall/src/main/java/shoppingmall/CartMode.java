@@ -31,8 +31,14 @@ public class CartMode {
         } else if (commandNumber == 3) {// 장바구니 출력
             cartModeViewer.showProduct();
         } else if (commandNumber == 4) {// 계산하기
-
+            purchaseCart();
+            System.exit(0);
         }
+    }
+
+    public void purchaseCart() {
+        int totalPrice = CartRepos.getTotalPrice();
+        cartModeViewer.showPurchased(totalPrice);
     }
 
     public void runCartAdd() {

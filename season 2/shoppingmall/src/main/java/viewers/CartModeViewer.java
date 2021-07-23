@@ -23,8 +23,8 @@ public class CartModeViewer {
 
     public void showInputCount(String name, int inventory) {
         System.out.print("담을 수량 입력 (" +
-                 name + "의 남은 재고 : " +
-                 inventory + ") : ");
+                name + "의 남은 재고 : " +
+                inventory + ") : ");
     }
 
     public void showProductAdded(String name, int count) {
@@ -59,5 +59,12 @@ public class CartModeViewer {
         }
         System.out.println("\n" + "총 "
                 + CartRepos.cartNameList.size() + "가지의 상품" + "\n");
+    }
+
+    public void showPurchased(int totalPrice) {
+        showProduct();
+        System.out.println("총" + totalPrice +
+                "원 결제 완료되었습니다");
+        System.out.println("장바구니 모드를 종료합니다.");
     }
 }
