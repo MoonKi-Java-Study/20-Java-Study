@@ -75,6 +75,7 @@ public class AdminMode {
         String name = scanner.next();
         if (isProductName(name)) {
             deleteProduct(name);
+            runAdminMode();
         }
         if (!isProductName(name)) {
             System.out.println("상품 삭제 종료.");
