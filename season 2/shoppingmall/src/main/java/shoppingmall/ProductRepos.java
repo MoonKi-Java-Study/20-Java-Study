@@ -152,4 +152,12 @@ public class ProductRepos {
         productList.add(data19);
         productList.add(data20);
     }
+
+    public static int getProductIndex(String productName) {
+        if (productNameList.contains(productName)) {
+            int existProductIndex = productNameList.indexOf(productName);
+            return existProductIndex;
+        }
+        return -1;
+    }
 }

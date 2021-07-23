@@ -29,5 +29,6 @@ public class CustomerModeViewer {
 
     public void showNoProduct() {
         System.out.println("입력하신 상품은 현재 등록되어 있지 않습니다.");
+        System.out.println();
     }
 }
