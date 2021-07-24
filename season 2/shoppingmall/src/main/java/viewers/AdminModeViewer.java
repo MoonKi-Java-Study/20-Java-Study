@@ -24,7 +24,7 @@ public class AdminModeViewer {
 
     public void showGetProductName() {
         System.out.println();
-        System.out.print("상품 가격 입력 : ");
+        System.out.print("상품 이름 입력 : ");
     }
 
     public void showGetProductPrice() {
