@@ -14,4 +14,16 @@ public class Product {
         this.price = price;
         this.inventory = inventory;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getInventory() {
+        return inventory;
+    }
 }

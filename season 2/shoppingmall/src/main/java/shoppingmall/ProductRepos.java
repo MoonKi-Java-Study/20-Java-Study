@@ -1,12 +1,65 @@
 package shoppingmall;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductRepos {
     public static ArrayList<ArrayList<String>> productList = new ArrayList<>();
     public static ArrayList<String> productNameList = new ArrayList<>();
+    public static List<Product> products = new ArrayList<>();
 
     public ProductRepos() {
+        Product product1 = new Product("따뜻한 스웨터", 40000, 100);
+        Product product2 = new Product("나이키 운동화", 83000, 100);
+        Product product3 = new Product("손목시계", 100000, 100);
+        Product product4 = new Product("BB크림", 30000, 100);
+        Product product5 = new Product("향긋 샴푸", 15000, 100);
+
+        Product product6 = new Product("매니큐어", 11000, 100);
+        Product product7 = new Product("저렴 TV", 709000, 100);
+        Product product8 = new Product("세탁기", 360000, 100);
+        Product product9 = new Product("공유기", 59000, 100);
+        Product product10 = new Product("식탁", 79000, 100);
+
+        Product product11 = new Product("암막커튼", 26000, 100);
+        Product product12 = new Product("책꽂이", 108000, 100);
+        Product product13 = new Product("기저귀", 16900, 100);
+        Product product14 = new Product("유모차", 398000, 100);
+        Product product15 = new Product("햅쌀", 38000, 100);
+
+        Product product16 = new Product("은갈치", 33000, 100);
+        Product product17 = new Product("흑당버블티 아이스바", 18900, 100);
+        Product product18 = new Product("종가집 배추김치", 29900, 100);
+        Product product19 = new Product("러닝머신", 1289000, 100);
+        Product product20 = new Product("이어폰", 30000, 100);
+
+        products.add(product1);
+        products.add(product2);
+        products.add(product3);
+        products.add(product4);
+        products.add(product5);
+
+        products.add(product6);
+        products.add(product7);
+        products.add(product8);
+        products.add(product9);
+        products.add(product10);
+
+        products.add(product11);
+        products.add(product12);
+        products.add(product13);
+        products.add(product14);
+        products.add(product15);
+
+        products.add(product16);
+        products.add(product17);
+        products.add(product18);
+        products.add(product19);
+        products.add(product20);
+
+
+
+
         productNameList.add("따뜻한 스웨터");
         productNameList.add("나이키 운동화");
         productNameList.add("손목시계");
