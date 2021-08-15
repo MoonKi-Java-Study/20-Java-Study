@@ -4,7 +4,6 @@ import errorcatcher.ErrorCatcher;
 import viewers.AdminModeViewer;
 import viewers.ProductViewer;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AdminMode {
@@ -74,7 +73,7 @@ public class AdminMode {
         adminModeViewer.showProductDelPage();
         String name = scanner.next();
         if (isProductName(name)) {
-            deleteProduct(name);
+            findProduct(name);
             runAdminMode();
         }
         if (!isProductName(name)) {
@@ -91,22 +90,22 @@ public class AdminMode {
     }
 
     public void addProduct(String name, int price) {
-        ArrayList<String> product = new ArrayList<String>();
-        product.add(name);
-        product.add(Integer.toString(price));
-        product.add("100");
-        ProductRepos.productList.add(product);
-        ProductRepos.productNameList.add(name);
-
+        int inventory = 100;
+        ProductRepos.products.add(new Product(name, price, inventory));
         adminModeViewer.showDisplayedProduct(name);
         runProductAdd();
     }
 
-    public void deleteProduct(String name) {
-        int indexOfProduct = ProductRepos.productNameList.indexOf(name);
-        ProductRepos.productNameList.remove(indexOfProduct);
-        ProductRepos.productList.remove(indexOfProduct);
-
+    public void findProduct(String name) {
+        for (Product product : ProductRepos.products) {
+            deleteProduct(product, name);
+        }
         adminModeViewer.showDeletedProduct(name);
+    }
+
+    public void deleteProduct(Product product, String name) {
+        if (ProductRepos.isProductName(product, name)) {
+            ProductRepos.products.remove(ProductRepos.products.indexOf(product));
+        }
     }
 }
