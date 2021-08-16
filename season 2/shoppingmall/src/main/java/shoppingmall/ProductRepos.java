@@ -182,7 +182,7 @@ public class ProductRepos {
     }
 
     public static boolean isProductName(Product product, String productName) {
-        if (product.getName().equals(productName)) {
+        if (productName.equals(product.getName())) {
             return true;
         }
         return false;

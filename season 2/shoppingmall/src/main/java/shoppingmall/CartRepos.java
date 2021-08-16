@@ -1,10 +1,13 @@
 package shoppingmall;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CartRepos {
     public static ArrayList<ArrayList<String>> cartList = new ArrayList<>();
     public static ArrayList<String> cartNameList = new ArrayList<>();
+
+    public static List<Product> cart = new ArrayList<>();
 
     public CartRepos() {
 
