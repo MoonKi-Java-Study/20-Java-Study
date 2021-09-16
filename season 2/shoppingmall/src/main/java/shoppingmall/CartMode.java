@@ -52,7 +52,7 @@ public class CartMode {
 
     public void validateProductName(String name) {
         if (isProductExist(name)) {
-            addToCart(name);
+            findProduct(name);
         } else if (!isProductExist(name)) {
             cartModeViewer.showNoProduct();
             runCartMode();
@@ -66,8 +66,13 @@ public class CartMode {
         return name;
     }
 
-    public void addToCart(String name) {
-        int inventory = ProductRepos.getProductInventory(name);
+    public void findProduct(String name) {
+
+
+
+        //int inventory = ProductRepos.getProductInventory(name);
+
+
         cartModeViewer.showInputCount(name, inventory);
         int count = errorCatcher.getInteger();
         if (validateProductCount(name, count)) {
@@ -77,6 +82,10 @@ public class CartMode {
         } else if (!validateProductCount(name, count)) {
             runCartAdd();
         }
+    }
+
+    public void addToCart() {
+
     }
 
     public void addToCartList(String name, int count) {

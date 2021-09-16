@@ -1,12 +1,40 @@
 package shoppingmall;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductRepos {
     public static ArrayList<ArrayList<String>> productList = new ArrayList<>();
     public static ArrayList<String> productNameList = new ArrayList<>();
+    public static List<Product> products = new ArrayList<>();
 
     public ProductRepos() {
+        products.add(new Product("따뜻한 스웨터", 40000, 100));
+        products.add(new Product("나이키 운동화", 83000, 100));
+        products.add(new Product("손목시계", 100000, 100));
+        products.add(new Product("BB크림", 30000, 100));
+        products.add(new Product("향긋 샴푸", 15000, 100));
+
+        products.add(new Product("매니큐어", 11000, 100));
+        products.add(new Product("저렴 TV", 709000, 100));
+        products.add(new Product("세탁기", 360000, 100));
+        products.add(new Product("공유기", 59000, 100));
+        products.add(new Product("향긋 샴푸", 15000, 100));
+
+        products.add(new Product("암막커튼", 26000, 100));
+        products.add(new Product("책꽂이", 108000, 100));
+        products.add(new Product("기저귀", 16900, 100));
+        products.add(new Product("유모차", 398000, 100));
+        products.add(new Product("햅쌀", 38000, 100));
+
+        products.add(new Product("은갈치", 33000, 100));
+        products.add(new Product("흑당버블티 아이스바", 18900, 100));
+        products.add(new Product("종가집 배추김치", 29900, 100));
+        products.add(new Product("러닝머신", 1289000, 100));
+        products.add(new Product("이어폰", 30000, 100));
+
+
+
         productNameList.add("따뜻한 스웨터");
         productNameList.add("나이키 운동화");
         productNameList.add("손목시계");
@@ -151,6 +179,13 @@ public class ProductRepos {
         productList.add(data18);
         productList.add(data19);
         productList.add(data20);
+    }
+
+    public static boolean isProductName(Product product, String productName) {
+        if (productName.equals(product.getName())) {
+            return true;
+        }
+        return false;
     }
 
     public static int getProductIndex(String productName) {

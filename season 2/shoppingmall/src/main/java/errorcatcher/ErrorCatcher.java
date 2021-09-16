@@ -15,7 +15,6 @@ public class ErrorCatcher {
                 if (a == -1) {
                     new MainMenu();
                 }
-
                 return a;
             } catch (InputMismatchException e) {
                 System.out.println("정수가 아닙니다. 다시 입력하세요.");
